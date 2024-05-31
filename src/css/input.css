@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body{
+    font-family: "Kanit", "Monserrat", sans-serif;
+}
+.navbar-fixed{
+    @apply fixed z-[99] bg-dark bg-opacity-80 backdrop-blur-sm dark:bg-light dark:bg-opacity-70;
+    box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1 )
+}
+.hamburger-menu{
+    @apply w-[24px] h-[2px] my-1 block bg-white rounded-full dark:bg-black;
+}
+.hamburger-active > span:nth-child(1) {
+    @apply  scale-50;
+}
+
+.hamburger-active > span:nth-child(2) {
+    @apply  scale-75;
+}
+
+.hamburger-active > span:nth-child(3) {
+    @apply  scale-90;
+}
+#dark-toggle:checked ~ label div.toggle-circle{
+    @apply translate-x-4;
+}
