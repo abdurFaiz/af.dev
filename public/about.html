@@ -1,12 +1,327 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>abdurfaiz.site | about</title>
+    <link rel="icon" type="image/x-icon" href="assets/image/icon-window.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,600;0,700;1,200;1,600;1,700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,200;1,700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="dist/css/output.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>
+
 <body>
-    <h1 class="font-bold text-2xl bg-red-600">hello about</h1>
+    <!-- start section header -->
+    <header class="bg-transparent">
+        <nav x-data="{ mobileMenuIsOpen: false }" @click.away="mobileMenuIsOpen = false"
+            class="fixed w-full z-20 flex items-center justify-between rounded-b-xl bg-transparent backdrop-blur-md shadow-md  border-b-[1px] border-light/5 px-6 py-1 md:px-20 md:py-4  dark:bg-light dark:shadow-slate-100 dark:bg-transparent dark:backdrop-blur-md dark:shadow-md dark:border-slate-50"
+            aria-label="menu">
+            <!-- Brand Logo -->
+            <a href="index.html"
+                class="block py-4 font-bold text-4xl text-slate-50 font-kanit italic bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-violet-700">Af</a>
+            <!-- Desktop Menu -->
+            <ul class="hidden items-center gap-6 md:flex">
+                <li><a href="index.html"
+                        class="font-medium text-light underline-offset-2 cursor-pointer hover:text-neutral-400 font-kanit focus:outline-none focus:underline dark:text-dark dark:hover:text-neutral-700"
+                        aria-current="page">Home</a></li>
+                <li><a href="about.html"
+                        class="font-medium text-light underline-offset-2 cursor-pointer hover:text-neutral-400 font-kanit focus:outline-none focus:underline dark:text-dark dark:hover:text-neutral-700">About</a>
+                </li>
+                <li><a href="index.html#project"
+                        class="font-medium text-light underline-offset-2 cursor-pointer hover:text-neutral-400 font-kanit focus:outline-none focus:underline dark:text-dark dark:hover:text-neutral-700">Project</a>
+                </li>
+                <li><a href="assets/doc/Abdurrahman Faiz-CV.pdf"
+                        class="font-medium text-light underline-offset-2 cursor-pointer hover:text-neutral-400 font-kanit focus:outline-none focus:underline dark:text-dark dark:hover:text-neutral-700">My
+                        Resume</a>
+                </li>
+                <input type="checkbox" id="dark-toggle" class="hidden" />
+                <label for="dark-toggle"
+                    class="size-10 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 cursor-pointer">
+                    <svg class="fill-violet-700 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg class="fill-yellow-500 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </label>
+            </ul>
+            <!-- Mobile Menu Button -->
+            <button @click="mobileMenuIsOpen = !mobileMenuIsOpen" :aria-expanded="mobileMenuIsOpen"
+                :class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null" type="button"
+                class="flex text-light dark:text-dark md:hidden" aria-label="mobile menu" aria-controls="mobileMenu">
+                <svg x-cloak x-show="!mobileMenuIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <svg x-cloak x-show="mobileMenuIsOpen" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true"
+                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <!-- Mobile Menu -->
+            <ul x-cloak x-show="mobileMenuIsOpen"
+                x-transition:enter="transition motion-reduce:transition-none ease-out duration-300"
+                x-transition:enter-start="-translate-y-full" x-transition:enter-end="translate-y-0"
+                x-transition:leave="transition motion-reduce:transition-none ease-out duration-300"
+                x-transition:leave-start="translate-y-0" x-transition:leave-end="-translate-y-full" id="mobileMenu"
+                class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex flex-col divide-y divide-slate-500 rounded-b-xl border-b border-neutral-800-300 bg-dark px-6 py-6  dark:divide-slate-500 dark:border-slate-300 dark:bg-light md:hidden">
+                <li class="py-4"><a href="hero"
+                        class="w-full text-lg font-medium font-kanit cursor-pointer text-light focus:underline dark:text-dark"
+                        aria-current="page">Home</a></li>
+                <li class="py-4"><a href="about.html"
+                        class="w-full text-lg font-medium font-kanit cursor-pointer text-light focus:underline dark:text-dark">About</a>
+                </li>
+                <li class="py-4"><a href="project"
+                        class="w-full text-lg font-medium font-kanit cursor-pointer text-light focus:underline dark:text-dark">Project</a>
+                </li>
+                <li class="py-4"><a href="assets/doc/Abdurrahman Faiz-CV.pdf"
+                        class="w-full text-lg font-medium font-kanit cursor-pointer text-light focus:underline dark:text-dark">My
+                        Resume</a>
+                </li>
+                <input type="checkbox" id="dark-toggle" class="hidden" />
+                <label for="dark-toggle"
+                    class="size-10 rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 cursor-pointer">
+                    <svg class="fill-violet-700 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg class="fill-yellow-500 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </label>
+            </ul>
+        </nav>
+    </header>
+    <!-- end section header -->
+    <!-- start section about -->
+    <section id="about"
+        class="pt-10 pb-10 px-5 bg-dark md:px-10 md:pt-40 md:pb-28 lg:px-32 lg:pb-14 lg:pt-20 dark:bg-light">
+        <div class="container">
+            <div class="mt-10 flex flex-col md:flex-row justify-center items-center gap-10">
+                <div class=" flex flex-col max-w-screen-sm gap-4">
+                    <h4 class="text-xl text-neutral-100 font-medium dark:text-neutral-700">A little about me</h4>
+                    <h2 class="font-semibold text-2xl md:text-5xl text-light leading-relaxed dark:text-dark">Hi👋! i'm
+                        faiz!</h2>
+                    <p class="text-base font-normal text-neutral-100 leading-relaxed dark:text-neutral-700">I'm an
+                        undergraduate student with major Informatics Engineering at Sebelas Maret University, Indonesia.
+                        Recently, I interned as a frontend developer at a regional government institute. My passion lies
+                        in UI/UX design, <span class="font-semibold text-neutral-200 dark:text-neutral-800">where I love
+                            collaborating to create impactful designs. I enjoy combining my
+                            creativity with coding skills to bridge the gap between design and engineering.</span>
+                        <br>
+                        I am excited by the challenge of crafting intuitive, polished interfaces that are both
+                        purposeful and delightful. In my free time, I explore trending design styles, read case studies
+                        to deepen my problem-solving skills, and build small web projects to practice coding.
+                    </p>
+                </div>
+                <div class=" max-w-screen-md overflow-hidden hover:scale-95 transition-all duration-700">
+                    <img src="assets/image/profile.png" alt="my profile"
+                        class="w-full hover:scale-125 transition-all duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="experiance"
+        class="pt-5 pb-10 px-5 bg-dark md:px-10 md:pt-20 md:pb-28 lg:px-32 lg:pb-14 lg:pt-10 dark:bg-light">
+        <div class="container">
+            <div class="flex flex-col gap-6">
+                <h3 class="text-2xl text-center md:text-4xl font-semibold text-neutral-100 dark:text-neutral-700">What
+                    have I done?
+                </h3>
+                <div class="md:mx-20">
+                    <div class="flex w-full flex-col gap-4 text-neutral-100 dark:text-neutral-800">
+                        <div x-data="{ isExpanded: false }" class="overflow-hidden rounded-xl ">
+                            <button id="controlsAccordionItemOne" type="button"
+                                class="flex w-full items-center justify-between gap-2 bg-dark p-4 text-left underline-offset-2 text-light dark:text-dark hover:bg-dark/5 focus-visible:bg-slate-100/75 focus-visible:underline focus-visible:outline-none dark:bg-light dark:hover:bg-neutral-200/95 transition-all duration-500"
+                                aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
+                                :class="isExpanded ? 'text-onSurfaceStrong dark:text-onSurfaceDarkStrong font-medium'  : 'text-onSurface dark:text-onSurfaceDark font-medium'"
+                                :aria-expanded="isExpanded ? 'true' : 'false'">
+                                Frontend Developer ● Dispendukcapil SKH
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                                    stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true"
+                                    :class="isExpanded  ?  'rotate-180'  :  'transition-all duration-500'">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </button>
+                            <div x-cloak x-show="isExpanded" x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 scale-90"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-300"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-90" id="accordionItemOne" role="region"
+                                aria-labelledby="controlsAccordionItemOne" x-collapse>
+                                <div class="p-4 text-sm sm:text-base text-pretty">
+                                    Delivered high-quality web applications by collaborating with cross-functional
+                                    teams. Increased productivity by 20% with Agile practices. Ensured responsive design
+                                    for superior user experience across all devices.
+                                </div>
+                            </div>
+                        </div>
+                        <div x-data="{ isExpanded: false }" class="overflow-hidden rounded-xl ">
+                            <button id="controlsAccordionItemOne" type="button"
+                                class="flex w-full items-center justify-between gap-2 bg-dark p-4 text-left underline-offset-2 text-light dark:text-dark hover:bg-dark/5 focus-visible:bg-slate-100/75 focus-visible:underline focus-visible:outline-none dark:bg-light dark:hover:bg-neutral-200/95 transition-all duration-500"
+                                aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
+                                :class="isExpanded ? 'text-onSurfaceStrong dark:text-onSurfaceDarkStrong font-medium'  : 'text-onSurface dark:text-onSurfaceDark font-medium'"
+                                :aria-expanded="isExpanded ? 'true' : 'false'">
+                                Wordpress Frontend Developer ● Solo International Performing Arts (SIPA)
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                                    stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true"
+                                    :class="isExpanded  ?  'rotate-180'  :  'transition-all duration-500'">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </button>
+                            <div x-cloak x-show="isExpanded" x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 scale-90"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-300"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-90" id="accordionItemOne" role="region"
+                                aria-labelledby="controlsAccordionItemOne" x-collapse>
+                                <div class="p-4 text-sm sm:text-base text-pretty">
+                                    Worked as a Frontend Developer (WordPress) for global performing arts events. Used
+                                    UI/UX skills to turn mockups into visually appealing, high-performance WordPress
+                                    themes, ensuring full responsiveness on all devices.
+                                </div>
+                            </div>
+                        </div>
+                        <div x-data="{ isExpanded: false }" class="overflow-hidden rounded-xl ">
+                            <button id="controlsAccordionItemOne" type="button"
+                                class="flex w-full items-center justify-between gap-2 bg-dark p-4 text-left underline-offset-2 text-light dark:text-dark hover:bg-dark/5 focus-visible:bg-slate-100/75 focus-visible:underline focus-visible:outline-none dark:bg-light dark:hover:bg-neutral-200/95 transition-all duration-500"
+                                aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
+                                :class="isExpanded ? 'text-onSurfaceStrong dark:text-onSurfaceDarkStrong font-medium'  : 'text-onSurface dark:text-onSurfaceDark font-medium'"
+                                :aria-expanded="isExpanded ? 'true' : 'false'">
+                                Website Coordinator & Wordpress Frontend Developer ● Event PPKMB UNS 2023
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                                    stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true"
+                                    :class="isExpanded  ?  'rotate-180'  :  'transition-all duration-500'">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </button>
+                            <div x-cloak x-show="isExpanded" x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 scale-90"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-300"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-90" id="accordionItemOne" role="region"
+                                aria-labelledby="controlsAccordionItemOne" x-collapse>
+                                <div class="p-4 text-sm sm:text-base text-pretty">
+                                    Created a high-quality WordPress website with a smooth, device-friendly user
+                                    experience. Led a team of four in UI design and development. Collaborated closely
+                                    with design, branding, and fundraising teams.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end section about -->
+    <footer
+        class="pt-10 pb-8 px-5  border-t-[1px] border-gray-800 bg-dark md:px-10 md:pt-20 md:pb-10 lg:px-20 lg:pb-10 lg:pt-20 dark:bg-light">
+        <div class="container">
+            <div class="w-full flex flex-wrap flex-col gap-8 md:flex-row md:gap-x-32">
+                <div class="flex flex-col flex-wrap gap-3 ">
+                    <div class="flex">
+                        <h4 class="text-base font-semibold text-light dark:text-dark">Navigation</h4>
+                    </div>
+                    <ul>
+                        <li><a href="#hero"
+                                class="text-base text-light font-extralight hover:text-gray-700 dark:text-dark">Home</a>
+                        </li>
+                        <li><a href="#About"
+                                class="text-base text-light font-extralight hover:text-gray-700 dark:text-dark">About</a>
+                        </li>
+                        <li><a href="#Project"
+                                class="text-base text-light font-extralight hover:text-gray-700 dark:text-dark">Project</a>
+                        </li>
+                        <li><a href="dist/Abdurrahman Faiz_CV.pdf"
+                                class="text-base text-light font-extralight hover:text-gray-700 dark:text-dark">My
+                                Resume</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex flex-wrap flex-col gap-4">
+                    <h4 class="text-base font-semibold text-light dark:text-dark">Social Media</h4>
+                    <div class="flex flex-wrap flex-col gap-2">
+                        <div class="flex items-center">
+                            <a href="https://www.linkedin.com/in/abdurrahman-faiz-af/"
+                                class="mr-4 rounded-full text-slate-300  dark:text-dark">
+                                <svg class="fill-current" role="img" width="20" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <title>LinkedIn</title>
+                                    <path
+                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/abdurrahman-faiz-af/"
+                                class="text-base text-light dark:text-dark">Linkedin</a>
+                        </div>
+                        <div class="flex items-center">
+                            <a href="https://www.instagram.com/faiiiz20s?igsh=MTl6a2E2bHp2MHdibQ=="
+                                class=" mr-4  text-slate-300 dark:text-dark">
+                                <svg class="fill-current" width="24" role="img" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <title>Instagram</title>
+                                    <path
+                                        d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077" />
+                                </svg>
+                            </a>
+                            <a href="https://www.instagram.com/faiiiz20s?igsh=MTl6a2E2bHp2MHdibQ=="
+                                class="text-base text-light dark:text-dark">Instagram</a>
+                        </div>
+                        <!-- <div class="flex items-center">
+                        <a href="" class=" mr-4 rounded-full text-slate-300 dark:text-dark">
+                            <svg class="fill-current" width="24" role="img" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <title>Behance</title>
+                                <path
+                                    d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z" />
+                            </svg>
+                        </a>
+                        <a href="" class="text-base text-light dark:text-dark">Behance</a>
+                    </div> -->
+                    </div>
+                </div>
+                <div class="w-full flex md:flex-col justify-center pt-14 md:pt-0">
+                    <h4 class="text-base text-light font-semibold dark:text-dark">&copy; Made with <span
+                            class="text-red-700"> ❤
+                        </span> by <span
+                            class="text-transparent bg-clip-text bg-transparent bg-gradient-to-r from-orange-500 to-violet-500 ">Abdurrahman
+                            Faiz</span></h4>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end footer -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/src/js/script.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
+
 </html>
