@@ -232,6 +232,34 @@
                                 </div>
                             </div>
                         </div>
+                        <div x-data="{ isExpanded: false }" class="overflow-hidden rounded-xl ">
+                            <button id="controlsAccordionItemOne" type="button"
+                                class="flex w-full items-center justify-between gap-2 bg-dark p-4 text-left underline-offset-2 text-light dark:text-dark hover:bg-dark/5 focus-visible:bg-slate-100/75 focus-visible:underline focus-visible:outline-none dark:bg-light dark:hover:bg-neutral-200/95 transition-all duration-500"
+                                aria-controls="accordionItemOne" @click="isExpanded = ! isExpanded"
+                                :class="isExpanded ? 'text-onSurfaceStrong dark:text-onSurfaceDarkStrong font-medium'  : 'text-onSurface dark:text-onSurfaceDark font-medium'"
+                                :aria-expanded="isExpanded ? 'true' : 'false'">
+                                UI/UX Designer ● Paw Care - Pet Care Booking Website | Tim Project
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                                    stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true"
+                                    :class="isExpanded  ?  'rotate-180'  :  'transition-all duration-500'">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </button>
+                            <div x-cloak x-show="isExpanded" x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 scale-90"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-300"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-90" id="accordionItemOne" role="region"
+                                aria-labelledby="controlsAccordionItemOne" x-collapse>
+                                <div class="p-4 text-sm sm:text-base text-pretty">
+                                    I conducted user research to enhance user experience, designed a 10+ screen website
+                                    using design thinking, and collaborated with developers for seamless
+                                    design-functionality integration.
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
